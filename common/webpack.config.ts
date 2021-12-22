@@ -24,6 +24,14 @@ const config: webpack.Configuration = {
     plugins: [
         new webpack.IgnorePlugin({resourceRegExp: /^pg-native$/})
     ],
+    externals: {
+        axios: {
+            root: 'axios',
+            commonjs2: 'axios',
+            commonjs: 'axios',
+            amd: 'axios',
+        }
+    }
 };
 
 export default config;

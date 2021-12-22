@@ -1,7 +1,7 @@
-import {glob} from "glob";
+import axios from 'axios'
 
 
 export const withDep = () => {
-    console.log('CALLEDWITHDEP', glob)
+    console.log('HAS AXIOS DEPENDENCY', axios.VERSION)
 
 }
