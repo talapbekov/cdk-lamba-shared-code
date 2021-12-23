@@ -7,13 +7,15 @@ echo $currentDir
 
 rm -rf common
 
+commonArtifactsDir="../../../../common/build"
+commonTypesDir="../../../../common/types"
+
 if test -f "dependencies"; then
 (
   # recreate local common dir
-  mkdir common
+  mkdir -p common
 
   cd common
-  commonArtifactsDir="../../../../common/build"
   # for each dependency - create symlinks
   input="../dependencies"
   while IFS= read -r dep
@@ -24,3 +26,7 @@ if test -f "dependencies"; then
   done < "$input"
   )
 fi
+
+# link types anyway
+cd common
+ln -sf "$commonTypesDir/"

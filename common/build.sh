@@ -15,8 +15,6 @@ npx tsc --declaration --emitDeclarationOnly
 npm run build
 
 # merge typedefs to build
-cd dist/lib
-cp -r . "$commonDir/build"
+cp -r dist/lib/. "$commonDir/build"
 
-cd $commonDir
 rm -rf dist

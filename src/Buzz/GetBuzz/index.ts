@@ -3,6 +3,7 @@ import {
   APIGatewayProxyResultV2,
 } from 'aws-lambda';
 import {logger} from "./common/logger/logger";
+import {SomeCommonType} from "./common/types/abc";
 
 const lowerCaseKeys = (obj: any) => {
   return Object.keys(obj).reduce((res, key) => {
@@ -15,9 +16,17 @@ export const handler = async(event:APIGatewayProxyEventV2):Promise<APIGatewayPro
   const { authorization } = lowerCaseKeys(event.headers || {});
   const { page, sort } = event.queryStringParameters || {};
 
+  // using shared linked type
+  const value: SomeCommonType = {
+    x: 23,
+    y: 23,
+  }
+
+  // using shared linked code
   logger('HHHH')
   let statusCode = 200, resp = {
-    hello: 'WORLD'
+    hello: 'WORLD',
+    value
   };
 
   return {
